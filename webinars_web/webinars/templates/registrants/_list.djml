@@ -1,0 +1,60 @@
+<table class="hs-table zebra-striped registrants hs-pagination {% if attendance == 'true' %}attendees{% else %}not-attendees{% endif %}">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>First</th>
+      <th>Last</th>
+      <th>Form</th>
+      {% if attendance == "true" %}
+        <th>Attendance</th>
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for registrant in registrants %}
+      <tr data-id="{{registrant.id}}">
+        <td>
+          {% if registrant.lead_url %}
+            <a href="{{registrant.lead_url}}" title="HubSpot Lead View for {{registrant.email}}" target="_blank">
+              <img src="http://{{static_domain}}/final/img/common/icons/external_link.gif" />
+            </a>
+          {% endif %}
+          {{registrant.email}}
+        </td>
+        <td>{{registrant.first_name}}</td>
+        <td>{{registrant.last_name}}</td>
+        <td>
+          {% if not registrant.cms_form.is_sync_target %}
+            {{registrant.cms_form.name}}
+            {% for lp in registrant.cms_form.landing_pages %}
+              <a href="{{lp.url}}" title="{{lp.name}}" target="_blank">
+                <img src="http://{{static_domain}}/final/img/common/icons/external_link.gif" />
+              </a>
+            {% endfor %}
+          {% else %}
+            <span class="na">imported</span>
+          {% endif %}
+        </td>
+        {% if attendance == "true" %}
+          <td style="width:340px;">
+            <div style="float:left; text-align: right; width: 30px;">{{ registrant.duration.m}}m</div>
+            <div style="float: left; margin-left: 10px; width: 300px; height: 22px; margin-top:0px; background-color: #dddde0; position: relative;">
+              <div style="position:absolute; height: 100%; left:{{registrant.caring_start_percentage|floatformat:2}}%; width:{{registrant.caring_percentage|floatformat:2}}%; background-color: #808890;"></div>
+              <div style="position:absolute; height: 100%; left:{{registrant.event.starts_at_care_percentage|floatformat:2}}%; width:2px; background-color: {% if registrant.present_at_starts_at%}#998888{% else %}#ddcccc{% endif %};"></div>
+              <div style="position:absolute; height: 100%; left:{{registrant.event.ends_at_care_percentage|floatformat:2}}%; width:2px;  background-color: {% if registrant.present_at_ends_at%}#998888{% else %}#ddcccc{% endif %};"></div>
+            </div>
+          </td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% if attendance == "true" %}
+  <script type="text/javascript">
+    hns('hubspot.webinars.stats', {
+      event_span: [[{{event.starts_at.s}},{{event.ends_at.s}}],[{{event.start_caring_at.s}},{{event.stop_caring_at.s}}]],
+      registrant_spans: [{% for r in registrants %}[{{r.started_at.s}},{{r.stopped_at.s}}]{% if not forloop.last %},{% endif %}{% endfor %}]
+    });
+  </script>
+{% endif %}
+

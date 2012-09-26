@@ -1,0 +1,16 @@
+{% extends "base.djml" %}
+{% load style_guide_tags %}
+
+{% block innards %}
+  {% hs_page_header %}
+    {% hs_header %}Create Event{% end_hs_header %}
+    {% hs_breadcrumbs %}
+      <a href="/">Webinars</a>
+      <a href="/events">Events</a>
+    {% end_hs_breadcrumbs %}
+  {% end_hs_page_header %}
+
+  {% include "events/_form.djml" %}
+{% endblock %}
+
+

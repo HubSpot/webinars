@@ -1,0 +1,43 @@
+{% extends "base.djml" %}
+
+{% block innards %}
+hello
+  {% include "common/_menu.djml" with selected=None %}
+
+  {% if registrants %}
+    <div class="row">
+      <div class="span16 columns">
+        <h3>Registrants <small>{{ registrants|length }}</small></h3>
+        {% include "registrants/_list.djml" with attendance="false" registrants=registrants %}
+      </div>
+    </div>
+  {% else %}
+
+    <div class="row">
+      <div class="span16 columns">
+        <h3>Attendance Over Time</h3>
+        <div id="chart" style="width:100%;height:250px;"></div>
+      </div>
+    </div>
+  
+      <div class="row">
+        <div class="span16 columns">
+          <h3>Attendees <small>{{ attendees|length }}</small></h3>
+          {% include "registrants/_list.djml" with attendance="true" registrants=attendees %}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span16 columns">
+          <h3>No-shows <small>{{ noshows|length }}</small></h3>
+          {% include "registrants/_list.djml" with attendance="false" registrants=noshows %}
+        </div>
+      </div>
+
+  {% endif %}
+
+  <a href="{{event.registered_segment_url}}">any registrants</a>
+  <a href="{{event.attended_segment_url}}">any attendants</a>
+  <a href="{{event.noshow_segment_url}}">noshows</a>
+
+{% endblock %}

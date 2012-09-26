@@ -1,0 +1,29 @@
+{% load humanize %}
+<div class="sync hub {% if sync.completed_at %}completed{% else %}ongoing{% endif %}">
+  <p class="title">
+    <a href="/webinars/hub/{{sync.hub.id}}/syncs">{{sync.hub.id}}</a>
+    <a class="action" href="/webinars/hubs/{{sync.hub.id}}/syncs/new?debug=False">sync</a>
+    <a class="action" href="/webinars/hubs/{{sync.hub.id}}/syncs/new?debug=True">debug</a>
+    <a class="action" href="/webinars/hubs/{{sync.hub.id}}/syncs/new?debug=False&force=True">forced</a>
+    <a class="action" href="/webinars/hubs/{{sync.hub.id}}/syncs/new?debug=True&force=True">forced+debug</a>
+    <a class="action" href="/webinars/hubs/{{sync.hub.id}}/syncs">history</a>
+    <a class="action" href="/market/{{sync.hub.id}}/canvas/webinars/events">app</a>
+  </p>
+  <p class="info">
+    {% if sync.forced_stop %}
+      <span class="forcedstop">Forced Stop</span>
+    {% endif %}
+    {% if sync.debug %}
+      <span class="debug">DEBUG</span>
+    {% endif %}
+    <span class="duration">{{sync.s}}s</span>
+    <span class="startstop">[{{sync.started_at.ny_ndt|date:"g:i:s A"|lower}} - {{sync.completed_at.ny_dt|date:"g:i:s A"|lower}}]</span>
+  </p>
+  <div style="clear:both;">
+  {% for account_sync in sync.account_syncs %}
+    {% include "account_syncs/_details.djml" with sync=account_sync%}
+    <div style="clear:both;">
+  {% endfor %}
+</div>
+
+

@@ -1,0 +1,76 @@
+{% extends "base.djml" %}
+{% load style_guide_tags %}
+
+{% block innards %}
+
+{% hs_page_header %}
+    {% hs_header %}Webinars - 10 Step Success Guide{% end_hs_header %}
+    {% hs_breadcrumbs %}
+        <a href="/events">Webinars</a>
+    {% end_hs_breadcrumbs %}
+{% end_hs_page_header %}
+
+<div id="success_guide">
+    <p>Webinars are an effective way to attract high-quality leads to your business. However, there's more to getting the most out of your webinar than just creating a compelling presentation and practicing the delivery. HubSpot hosts hundreds of marketing webinars a year and maximizes their impact with ten simple steps taken before and after each webinar. The Webinars app deeply integrates HubSpot and WebEx to make following these best practices simple and easy.</p>
+
+    <h2>1. Plan your webinar</h2>
+    <img class="figure" src="http://{{static_domain}}/final/img/webinars/screenshots/new_landing_page.jpg" />
+    <img class="figure" src="http://{{static_domain}}/final/img/webinars/screenshots/landing_page_creator.jpg" />
+    <img class="figure" src="http://{{static_domain}}/final/img/webinars/screenshots/create_event_left.jpg" />
+    <img class="figure" src="http://{{static_domain}}/final/img/webinars/screenshots/create_event_right.jpg" />
+    <p>Choose the topic, find a speaker or presenter and pick a date for your webinar. Don't forget to book a quiet venue and any necessary equipment!</p>
+    <p>For more details, see this HubSpot blog post: <a target="_blank" href="http://blog.hubspot.com/blog/tabid/6307/bid/8440/How-to-Setup-and-Promote-Your-First-Marketing-Webinar.aspx">How to Setup and Promote Your First Marketing Webinar</a>.
+    </p>
+
+    <h2>2. Create a landing page</h2>
+    <p>The Webinars app can automatically create a registrant for your webinar whenever a lead submits a form on a HubSpot landing page. No more need to use generic landing pages for your webinars, you can use a <a href="http://app.hubspot.com/l/landing" target="_blank">HubSpot landing page</a> instead. For help creating a landing page in HubSpot, check out the <a href="http://learning.hubspot.com/landing-pages/" target="_blank">Learning Center</a>.</p>
+    <p><span class="label warning">NOTE</span>&nbsp;Be sure to use a new form for your webinar landing page ("Duplicating" a landing page automatically creates a new form as well). If you re-use a form that is on an existing landing page, leads converting on EITHER page will be registered for the webinar (this is probably not what you want).</p>  
+
+    <h2>3. Create the webinar event and Associate your form</h2>
+    <p><img class="icon" src="http://{{static_domain}}/final/img/webinars/gotowebinar.16.png" style="margin-bottom: -3px;" /> GoToWebinar Users:
+      Create your event as you normally would.  Wait up to 30 minutes for that new event to propagate over to the app.  Then edit the event, and associate you webinar's registration forms.</p>
+    <p><img class="icon" src="http://{{static_domain}}/final/img/webinars/webex.16.png" style="margin-bottom: -3px;" /> WebEx Users: 
+      Unless you need advanced webinar options, you can <a href="/events/new" target="_blank">create a new webinar event</a> inside the Webinars App.  Specify the event details, and then assocate your webinar's registration forms.
+      The webinar event will be created without a password and with email reminders off (though it will send the initial registration email when registration occurs). These options can be changed in the WebEx settings page for the webinar.</p>
+    <p><img class="icon" src="http://{{static_domain}}/final/img/webinars/gotowebinar.16.png" style="margin-bottom: -3px;" /><img class="icon" src="http://{{static_domain}}/final/img/webinars/webex.16.png" style="margin-bottom: -3px;" /> All Users:
+      Associating your webinar's registration forms, each&nbsp;&nbsp;<img src="http://{{static_domain}}/final/img/common/icons/external_link.gif" /> icon next to a form name represents a landing page that is currently using that form. Check to make sure your chosen forms are only active on landing pages meant for the current webinar event.</p>
+    </ul>
+
+    <h2>4. Promote the webinar</h2>
+    <p>Leverage your marketing reach to announce your webinar. Direct visitors to the webinar landing page so they are automatically registered. Some promotion ideas:</p>
+    <ul>
+        <li><a target="_blank" href="http://app.hubspot.com/l/blog">Write a blog post</a> relevant to the webinar topic - don't forget a Call to Action!</li>
+        <li><a target="_blank" href="http://app.hubspot.com/l/email">Send an email</a> to interested leads and customers announcing the webinar.</li>
+        <li><a target="_blank" href="http://app.hubspot.com/l/social">Use social media</a> to share the webinar announcement with your social following.</li>
+    </ul>
+
+    <h2>5. Remind your registrants</h2>
+    <p>The Webinars app creates lists in HubSpot of webinar registrants. Use these lists to send reminders so no one forgets to attend, and enjoy the improved deliverability of sending from HubSpot.  However, you'll want to make sure your webinar provider is not sending its own reminder emails.</p>
+    <ul>
+        <li>Click the webinar name in the Future Events table on the <a target="_blank" href="/events">Webinar Events</a> page.</li>
+        <li>Click the "list" link on the "registrants" tab. For help with list segmentation, check out the <a target="_blank" href="http://help.hubspot.com/articles/Tutorial/how-to-use-list-manager">List Manager tutorial</a>.</li>
+    </ul>
+
+    <h2>6. Run an informative and captivating webinar!</h2>
+    <p>Many helpful tips in <a target="_blank" href="http://blog.hubspot.com/blog/tabid/6307/bid/8442/How-to-Host-Your-First-Webinar.aspx">How to Host Your First Webinar - Part 2</a>.</p>
+    
+    <h2>7. Analyze your webinar attendance</h2>
+    <p>After the webinar, click the webinar name in the Past Events table on the <a target="_blank" href="/events">Webinar Events</a> page to see analytics for your webinar.</p>
+    <ul>
+        <li>Use the "Attendance Over Time" graph to determine which portions of your webinar were the most engaging.</li>
+        <li>The "Attendance" bars beside each attendee highlight the most engaged leads for follow-up marketing or sales efforts.</li> 
+    </ul>
+    <img class="figure" src="http://{{static_domain}}/final/img/webinars/screenshots/attendance_graph.jpg" />
+    
+    <h2>8. Follow up with attendees and no-shows</h2>
+    <p>The Webinars app creates lists of webinar attendees and no-shows after the webinar finishes. Send a follow-up email to no-shows with an archived copy of the webinar or enroll attendees in <a target="_blank" href="http://learning.hubspot.com/lead-nurturing/">lead nurturing campaigns.</a></p>
+    <p>For more follow-up ideas (and tips to make your webinar "evergreen"), see this blog post: <a target="_blank" href="http://blog.hubspot.com/blog/tabid/6307/bid/8443/How-to-Measure-and-Get-Even-More-Value-from-Your-First-Webinar.aspx">How to Measure and Get Even More Value from Your First Webinar</a>.</p>
+    
+    <h2>9. Set up custom lead scoring</h2>
+    <p>You may want to incorporate webinar registration or attendance into a custom lead score.  That is, if a lead attends a webinar they are likely more engaged with your company than someone who just registered, or someone who has never registered.  You can set all this up easily in the Lead Grader app. <a target="_blank" href="https://app.hubspot.com/market/front/leadgrader">Lead Grader app</a>.</p>
+        
+    <h2>10. Pat yourself on the back</h2>
+    <p>Awesome job!</p>
+</div>
+{% endblock %}
+

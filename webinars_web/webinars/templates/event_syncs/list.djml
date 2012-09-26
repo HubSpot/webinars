@@ -1,0 +1,53 @@
+{% load humanize %}
+<html>
+  <head>
+    <style type="text/css">
+      html, body { background-color:#eee; color:#333; font-size:14px;}
+      li { list-style:none; }
+      p { margin:2px; }
+      p.title, p.info { font-variant:small-caps; float:left; margin-right:20px}
+      p.title { font-weight:bold; }
+      p.info { font-size:12px; }
+      div>ul, li>ul { clear:both }
+      table { border-collapse: collapse; }
+      td,th { padding: 5px 10px; border: 2px solid #aaa; }
+    </style>
+  </head>
+  <body>
+    <h3>{{event.id}} Sync History</h3>
+    <h4>Event Syncs</h4>
+    <table>
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>start</th>
+          <th>dur</th>
+          <th></th>
+          <th>stop</th>
+          <th>notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sync in event_syncs %}
+          <tr>
+            <td><a href="/webinars/event_syncs/{{sync.id}}">{{sync.id}}</a></td>
+            <td>{{sync.started_at.ny_ndt|date:"g:i:s A"|lower}}</td>
+            <td>{{sync.s|floatformat:1}}s</td>
+            <td>
+              {% if sync.id == hub.current_sync.id %}CURRENT <a href="/webinars/events/{{event.id}}/syncs/interrupt">kill</a>{% endif %}
+              {% if sync.id == hub.last_sync.id %} LAST{% endif %}
+            </td>
+            <td>{{sync.completed_at.ny_ndt|date:"g:i:s A"|lower}}</td>
+            <td>
+              {% if sync.forced_stop %}FORCED-STOP{% endif %}
+              {% if sync.debug %}DEBUG{% endif %}
+              {% if sync.error %}ERROR:"{{sync.error}}"{% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
+
+

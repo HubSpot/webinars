@@ -1,0 +1,21 @@
+  {% comment %}
+<fieldset>
+  <legend>Event Details</legend>
+  {% for field in details.visible_fields %}
+    <div class="clearfix{% if field.name in details.errors %} error{% endif %}">
+      {{ field.label_tag }}
+      <div class="input">
+        {{ field }}
+        {% for error in field.errors %}
+          <span class="help-inline">{{error}}</span>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+  {% endcomment %}
+
+  {{ form.as_fieldset_details }}
+  {% comment %}
+</fieldset>
+  {% endcomment %}
+

@@ -1,0 +1,79 @@
+{% extends "base.djml" %}
+{% load style_guide_tags %}
+
+{% block innards %}
+<div class="liner{% if hub.current_sync and hub.current_sync.visible %} syncing{% endif %}">
+    {% hs_page_header %}
+      {% hs_header %}Webinar Events{% end_hs_header %}
+      {% hs_subheader %}<span class="syncing"><span>syncing</span><img src="http://{{static_domain}}/final/img/common/spinner/spinner.16x16.140e6d.ffffff.gif" /></span><span class="not-syncing">All of your past and future webinar events</span>{% end_hs_subheader %}
+    {% end_hs_page_header %}
+
+    <div class="webinars-nav">
+      <a class="accounts-nav" href="/accounts">Accounts</a>
+    </div>
+    <h4>Future Events</h4>
+    {% include "events/_list.djml" with events=future_events past=False empty_callout=True %}
+    {% if hub.has_webex_account %}
+      <div class="events-actions">
+        {% hs_button href="/events/new" class="primary" %}New Event{% end_hs_button %}
+      </div>
+    {% endif %}
+
+    <div class="section">
+    {% if past_events|length or hub.current_sync and hub.current_sync.visible %}
+      <h4>Past Events</h4>
+      {% include "events/_list.djml" with events=past_events past=True empty_callout=False %}
+    {% endif %}
+    </div>
+
+    <div class="section-wrapper">
+      <div class="section global-lists">
+        <h4>Global Lists</h4>
+        <p>These are generated lists for leads that have registered or attended <strong>any</strong> of your webinars.  Click into any of your events above for event specific lists.</p>
+        <ul>
+          <li><a href="{{hub.registered_any_segment_url}}">Registrants</a> from any and all webinars</li>
+          <li><a href="{{hub.attended_any_segment_url}}">Attendees</a> from any and all webinars</li>
+        </ul>
+      </div>
+
+      <div class="section events-sync" data-last_sync_us="{{hub.last_sync.completed_at.us}}">
+        <div>
+          <h4>Events Sync <small>{% if hub.last_synced_at.dt %}last synced <span class="timeago" title="{{hub.last_synced_at.dt|date:"c"}}">{{hub.last_synced_at.dt}}</span>{% endif %}</small></h4>
+          <p class="normal">
+          The webinar events above are synced with your webinar provider every 15 minutes approximately.  
+          Simply do nothing, and your changes will propagate.  
+          You may also manually <a href="/events/sync">trigger a sync</a> right now, but expect it to possibly take a few minutes to complete. 
+          </p>
+          <p class="working">
+          syncing data... <img src="http://{{static_domain}}/final/img/common/spinner/spinner.16x16.999999.ffffff.gif" />
+          </p>
+          {% if hub.has_gtw_account %}
+            <p>
+              <span class="label">Note</span>
+              GoToWebinar provides only a cached version of your data to this app that is up to 15 minutes delayed, so you may have to wait up to 30 minutes total for your GTW changes to appear here.
+            </p>
+          {% endif %}
+        </div>
+      </div>
+      
+      <div class="section success-guide">
+        <h4>Success Guide</h4>
+        <p>Wondering how HubSpot got the <a href="http://www.hubspot.com/blog/bid/23564/HubSpot-Breaks-World-Record-For-Largest-Webinar">Guinness World Record</a> for largest webinar? Learn all our secrets in the <a href="/success_guide">Webinars Success Guide</a>, a simple list of best practices to help you leverage the capabilities of the Webinar App and its deep integration with HubSpot to the fullest.</p>
+      </div>
+      
+    </div>
+
+    <div style="display:none;">
+      <div id="event-delete-warning" class="hs-fancybox">
+        <h4>Deleting "<span></span>"!<h4>
+
+        <p>Deleting this event will cause it to be deleted within Webex as well as this dashboard.  You will lose all data and analytics for this event, though any leads synced to HubSpot will remain.
+        <h3>Are you sure?</h3>
+        {% hs_button href="#" class="primary confirm-event-delete" %}Yes, Delete It!{% end_hs_button %}
+        {% hs_button href="#" class="secondary cancel-event-delete" %}No, Forget I ever clicked 'delete'{% end_hs_button %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+

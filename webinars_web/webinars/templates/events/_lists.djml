@@ -1,0 +1,44 @@
+<div class="event-lists">
+  {% if current_events|length %}
+    <div class="row current">
+      <div class="span16 columns">
+        {% include "events/_sync.djml" with triggered=sync_triggered %}
+        <h3>In Progress</h3>
+        {% include "events/_list.djml" with events=current_events past="false" %}
+      </div>
+    </div>
+
+    <div class="row future">
+      <div class="span16 columns">
+        <h3>Future</h3>
+        {% include "events/_list.djml" with events=future_events past="false" %}
+        <div class="table-actions">
+          <a class="btn primary" href="/events/new" >New Event</a>
+        </div>
+      </div>
+    </div>
+
+  {% else %}
+
+    <div class="row future">
+      <div class="span16 columns">
+        {% include "events/_sync.djml" with triggered=sync_triggered %}
+        <h3>Future</h3>
+        {% include "events/_list.djml" with events=future_events past="false" %}
+        <div class="table-actions">
+          <a class="btn primary" href="/events/new" >New Event</a>
+        </div>
+      </div>
+    </div>
+
+  {% endif %}
+
+  {% if past_events|length %}
+    <div class="row past">
+      <div class="span16 columns">
+        <h3>Past</h3>
+        {% include "events/_list.djml" with events=past_events past="true" %}
+      </div>
+    </div>
+  {% endif %}
+</div>

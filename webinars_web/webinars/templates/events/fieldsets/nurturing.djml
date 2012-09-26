@@ -1,0 +1,38 @@
+<fieldset>
+  <legend>Post-Webinar Nurturing</legend>
+  {% for field in nurturing.visible_fields %}
+    <div class="clearfix{% if field.name in form.errors %} error{% endif %}">
+      {{ field.label_tag }}
+      <div class="input">
+        {{ field }}
+        {% for error in field.errors %}
+          <span class="help-inline">{{error}}</span>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+
+  <div class="clearfix">
+    <label for="id_nurturing_attendees">Attendees</label>
+    <div class="input">
+      <select id="id_nurturing_attendees" name="nurturing_attendees">
+        <option value="">-- NONE --</option>
+        <option value="">Attended Webinar Campaign</option>
+        <option value="">Missed Webinar Campaign</option>
+      </select>
+      <span class="help-block">Nurturing campaign applied to those that registered and attended this webinar</span>
+    </div>
+  </div>
+  <div class="clearfix">
+    <label for="id_nurturing_non_attendees">No-shows</label>
+    <div class="input">
+      <select id="id_nurturing_non_attendees" name="nurturing_non_attendees">
+        <option value="">-- NONE --</option>
+        <option value="">Attended Webinar Campaign</option>
+        <option value="">Missed Webinar Campaign</option>
+      </select>
+      <span class="help-block">Nurturing campaign applied to those that registered but missed this webinar</span>
+    </div>
+  </div>
+</fieldset>
+

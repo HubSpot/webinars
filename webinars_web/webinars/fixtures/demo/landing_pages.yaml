@@ -1,0 +1,56 @@
+- model: webinars.landingpage
+  pk: 1
+  fields:
+    form: 1
+    form_title: 'Form Title'
+    name: 'Page Title'
+    url: 'http://fake.url'
+
+- model: webinars.landingpage
+  pk: 2
+  fields:
+    form: 1
+    form_title: 'Form Title'
+    name: 'Page Title'
+    url: 'http://fake.url'
+
+- model: webinars.landingpage
+  pk: 3
+  fields:
+    form: 1
+    form_title: 'Form Title'
+    name: 'Page Title'
+    url: 'http://fake.url'
+
+- model: webinars.landingpage
+  pk: 4
+  fields:
+    form: 2
+    form_title: 'Form Title'
+    name: 'Page Title'
+    url: 'http://fake.url'
+
+- model: webinars.landingpage
+  pk: 5
+  fields:
+    form: 3
+    form_title: 'Form Title'
+    name: 'Page Title'
+    url: 'http://fake.url'
+
+- model: webinars.landingpage
+  pk: 6
+  fields:
+    form: 5
+    form_title: 'Form Title'
+    name: 'Page Title'
+    url: 'http://fake.url'
+
+- model: webinars.landingpage
+  pk: 7
+  fields:
+    form: 5
+    form_title: 'Form Title'
+    name: 'Page Title'
+    url: 'http://fake.url'
+

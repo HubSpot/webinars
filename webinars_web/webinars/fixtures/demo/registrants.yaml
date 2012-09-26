@@ -1,0 +1,239 @@
+- model: webinars.registrant
+  pk: 1
+  fields:
+    event: 1
+    lead: 1
+    attended_for: 20
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 2
+  fields:
+    event: 1
+    lead: 1
+    attended_for: 40
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 3
+  fields:
+    event: 1
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 4
+  fields:
+    event: 1
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 5
+  fields:
+    event: 1
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 6
+  fields:
+    event: 1
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 7
+  fields:
+    event: 1
+    lead: 1
+    remote_birth: False
+      
+- model: webinars.registrant
+  pk: 8
+  fields:
+    event: 1
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 9
+  fields:
+    event: 2
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 10
+  fields:
+    event: 2
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 11
+  fields:
+    event: 2
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 12
+  fields:
+    event: 3
+    lead: 1
+    started_at: '2011-08-13 13:08:00'
+    stopped_at: '2011-08-13 13:58:00'
+    attended_for: 50
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 13
+  fields:
+    event: 3
+    lead: 1
+    started_at: '2011-08-13 13:08:00'
+    stopped_at: '2011-08-13 13:58:00'
+    attended_for: 50
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 14
+  fields:
+    event: 3
+    lead: 1
+    started_at: '2011-08-13 13:08:00'
+    stopped_at: '2011-08-13 13:48:00'
+    attended_for: 40
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 15
+  fields:
+    event: 3
+    lead: 1
+    started_at: '2011-08-13 13:08:00'
+    stopped_at: '2011-08-13 13:48:00'
+    attended_for: 40
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 16
+  fields:
+    event: 3
+    lead: 1
+    started_at: '2011-08-13 13:08:00'
+    stopped_at: '2011-08-13 13:48:00'
+    attended_for: 40
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 17
+  fields:
+    event: 3
+    lead: 1
+    started_at: '2011-08-13 13:08:00'
+    stopped_at: '2011-08-13 13:48:00'
+    attended_for: 40
+    remote_birth: False
+      
+- model: webinars.registrant
+  pk: 18
+  fields:
+    event: 3
+    lead: 1
+    started_at: '2011-08-13 13:08:00'
+    stopped_at: '2011-08-13 13:10:00'
+    attended_for: 2 
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 19
+  fields:
+    event: 3
+    lead: 1
+    started_at: '2011-08-13 13:08:00'
+    stopped_at: '2011-08-13 13:38:00'
+    attended_for: 30
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 20
+  fields:
+    event: 3
+    lead: 1
+    started_at: '2011-08-13 13:28:00'
+    stopped_at: '2011-08-13 13:48:00'
+    attended_for: 20
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 21
+  fields:
+    event: 4
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 22
+  fields:
+    event: 4
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 23
+  fields:
+    event: 4
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 24
+  fields:
+    event: 4
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 25
+  fields:
+    event: 4
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 26
+  fields:
+    event: 4
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 27
+  fields:
+    event: 4
+    lead: 1
+    remote_birth: False
+      
+- model: webinars.registrant
+  pk: 28
+  fields:
+    event: 5
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 29
+  fields:
+    event: 5
+    lead: 1
+    remote_birth: False
+
+- model: webinars.registrant
+  pk: 30
+  fields:
+    event: 5
+    lead: 1
+    remote_birth: False
+

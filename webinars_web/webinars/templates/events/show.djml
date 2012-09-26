@@ -1,0 +1,67 @@
+{% extends "base.djml" %}
+{% load style_guide_tags %}
+
+{% block innards %}
+
+  <div>
+
+    <div class="header-leftchunk">
+      {% hs_page_header %}
+        {% hs_header %}
+        {{ event.title }}{% if future %}<a class="edit" href="/events/{{event.id}}/edit">edit</a>{% endif %}
+        <span class="time">{{event.starts_at.dt|date:"M j g:i A"}} {{event.duration_short_string}}
+          {% if event.landing_pages|length > 0 %}
+            {% for lp in event.landing_pages %}
+              <a href="{{lp.url}}" title="{{lp.name}}" target="_blank">
+                <img src="http://{{static_domain}}/final/img/common/icons/external_link.gif"/>
+              </a>
+            {% endfor %}
+          {% endif %}
+        </span>
+        {% end_hs_header %}
+        {% hs_breadcrumbs %}
+          <a href="/">Webinars</a>
+          <a href="/events">Events</a>
+        {% end_hs_breadcrumbs %}
+      {% end_hs_page_header %}
+    </div>
+
+  </div>
+
+  {% if future %}
+  <h3>Registrants <small>{{ registrants|length }}</small>  <a href="{{event.registered_segment_url}}" target="_Blank" class="hs-popover list-tab no-dec" data-placement="left" data-original-title="Email, nurture, or export these registrants with our List Manager!">List</a>&nbsp;&nbsp;<a href='/market/{{event.hub.id}}/canvas/{{MARKETPLACE_SLUG}}/eventsx/{{event.id}}/registrants' class="hs-popover list-tab" data-placement="left" data-original-title="Download a list of your registrants as a csv!"><img class='downlo' src='http://{{static_domain}}/final/img/common/icons/external_link.gif'/></a></h3>
+    {% include "registrants/_list.djml" with attendance="false" registrants=registrants %}
+  {% else %}
+
+    <h3>Attendance Over Time</h3>
+    <div id="chart" style="width:100%;height:250px;"></div>
+    
+    <div id="tabs">
+      <ul>
+        <li><a href="#tabs-1"><h3><small>{{ attendees|length }}</small> Attendees</h3></a><a href="{{event.attended_segment_url}}" target="_Blank" class="hs-popover list-tab" data-placement="left" data-original-title="Email, nurture, or export these attendees with our List Manager!">List</a><a href='/market/{{event.hub.id}}/canvas/{{MARKETPLACE_SLUG}}/eventsx/{{event.id}}/attendees' class="hs-popover list-tab" data-placement="left" data-original-title="Download a list of your attendees as a csv!"><img class='downlo' src='http://{{static_domain}}/final/img/common/icons/external_link.gif'/></a></li>
+        <li><a href="#tabs-2"><h3><small>{{ noshows|length }}</small> No-Shows</h3></a><a href="{{event.noshow_segment_url}}" target="_Blank" class="hs-popover list-tab" data-placement="left" data-original-title="Email, nurture, or export these no-shows with our List Manager!">List</a><a href='/market/{{event.hub.id}}/canvas/{{MARKETPLACE_SLUG}}/eventsx/{{event.id}}/noshows' class="hs-popover list-tab" data-placement="left" data-original-title="Download a list of your no-shows as a csv!"><img class='downlo' src='http://{{static_domain}}/final/img/common/icons/external_link.gif'/></a></li>
+        {% with noshows|length as nopers %}
+          {% with attendees|length as yuppers %}
+          <li><a href="#tabs-3"><h3><small>{{ nopers|add:yuppers }}</small> Registrants</h3></a><a href="{{event.registered_segment_url}}" target="_Blank" class="hs-popover list-tab" data-placement="left" data-original-title="Email, nurture, or export these registrants with our List Manager!">List</a><a href='/market/{{event.hub.id}}/canvas/{{MARKETPLACE_SLUG}}/eventsx/{{event.id}}/registrants' class="hs-popover list-tab" data-placement="left" data-original-title="Download a list of your registrants as a csv!"><img class='downlo' src='http://{{static_domain}}/final/img/common/icons/external_link.gif'/></a></li>
+          {% endwith %}
+        {% endwith %}
+      </ul>
+
+      <div id="tabs-1">
+        {% include "registrants/_list.djml" with attendance="true" registrants=attendees %}</li>
+      </div>
+
+      <div id="tabs-2">
+        {% include "registrants/_list.djml" with attendance="false" registrants=noshows %}
+      </div>
+
+      <div id="tabs-3">
+        {% include "registrants/_list.djml" with registrants=registrants %}
+      </div>
+
+    </div><!-- div#tabs -->
+  {% endif %}
+
+
+{% endblock %}
+

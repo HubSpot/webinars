@@ -1,0 +1,35 @@
+- model: webinars.form
+  pk: 1
+  fields:
+    event: 1
+    guid: 'FAKEGUID'
+    name: '#1 Form'
+
+- model: webinars.form
+  pk: 2
+  fields:
+    event: 2
+    guid: 'FAKEGUID'
+    name: '#2 Form'
+
+- model: webinars.form
+  pk: 3
+  fields:
+    event: 3
+    guid: 'FAKEGUID'
+    name: '#3 Form'
+
+- model: webinars.form
+  pk: 4
+  fields:
+    event: 4
+    guid: 'FAKEGUID'
+    name: '#4 Form'
+
+- model: webinars.form
+  pk: 5
+  fields:
+    event: 5
+    guid: 'FAKEGUID'
+    name: '#5 Form'
+

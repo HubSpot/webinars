@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="//{{static_domain}}/final/css/webinars/app.css{{querystring_version_snippet}}" />
+    </head>
+    <body>
+        <div class="webinars">
+            <div id="about_page">
+                <div class="breadcrumb"><a href="javascript:history.back();">&laquo;&nbsp;Back to HubSpot Marketplace</a></div>
+                <h1>Webinars App - What You Get</h1>
+                
+                <div class="sidebar">
+                    <img src="http://{{static_domain}}/final/img/webinars/screenshots/create_event_left.jpg" />
+                    <img src="http://{{static_domain}}/final/img/webinars/screenshots/create_event_right.jpg" />
+                </div>
+                
+                <p class="subheader">Simplify your webinar workflow and increase the impact of your webinars 
+                by leveraging the deep integration between HubSpot and GoToWebinar/WebEx provided by the Webinars App.
+                </p>
+                
+                <div class="items">
+                    <div>
+                        <span>1</span>Use a HubSpot landing page for your webinar. Visitors who convert will become webinar registrants and leads in HubSpot.
+                    </div>
+                    <div>
+                        <span>2</span>Leads in HubSpot and registrants in GoToWebinar/WebEx will be synced automatically. Use HubSpot's lead intelligence to promote webinars more effectively.
+                    </div>
+                    <div>
+                        <span>3</span>Determine the most engaging portions of your webinar and find out which attendees had a strong connection with your content. 
+                    </div>
+                    <div>
+                        <span>4</span>Target webinar registrants, attendees and no-shows for email marketing or lead nurturing with automatically created list segments.
+                    </div>
+                    <div>
+                        <span>5</span>Create your webinar events inside HubSpot with a streamlined, simplified interface - skip the 20+ options that WebEx presents. (WebEx only -- GoToWebinar users will still need to create events inside GoToWebinar)
+                    </div>
+                </div>
+                <div style="clear: left;">&nbsp;</div>
+
+                <div class="cta">
+                    <a href="javascript:history.back();">I'm Ready to Install</a>
+                </div>
+                
+                <img src="http://{{static_domain}}/final/img/webinars/screenshots/attendance_graph.jpg" />
+            </div>
+        </div>
+    </body>
+</html>

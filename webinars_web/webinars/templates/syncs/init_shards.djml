@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <h4>Stage Filled -- Are we ready to kick off shards?</h4>
+    <p></p>
+    {% if shards %}
+      {% for shard in shards %}
+        <p>{{shard.trigger_path}} [
+          <a href="{{shard.trigger_path}}">direct</a> 
+          {% if postbin %} | <a href="{{shard.postbin_partial_path}}{{postbin}}">postbin</a>> {% endif %}
+          | <a href="{{shard.taskqueue_path}}">taskqueue</a> ]
+        </p>
+      {% endfor %}
+    {% else %}
+      Not ready for shards yet-- still have more things to fill
+    {% endif %}
+  </body>
+</html>
+
+

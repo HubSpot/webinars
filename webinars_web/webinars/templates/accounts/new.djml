@@ -1,0 +1,19 @@
+{% extends "base.djml" %}
+{% load style_guide_tags %}
+
+{% block innards %}
+  {% hs_page_header %}
+    {% hs_header %}Connect Account{% end_hs_header %}
+    {% hs_subheader %}Enter the credentials for your webinar provider{% end_hs_subheader %}
+    {% hs_breadcrumbs %}
+      <a href="/">Webinars</a>
+      <a href="/accounts">Accounts</a>
+    {% end_hs_breadcrumbs %}
+  {% end_hs_page_header %}
+
+  <div class="main-columns">
+    {% include "accounts/_form.djml" %}
+  </div>
+  {% include "accounts/_warning.djml" %}
+{% endblock %}
+

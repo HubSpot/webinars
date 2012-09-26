@@ -1,0 +1,5 @@
+from webinars_web.webinars.models.staged.webex_event import StagedWebexEvent
+from webinars_web.webinars.models.staged.gtw_event import StagedGTWEvent
+from webinars_web.webinars.models.staged.webex_registrant import StagedWebexRegistrant
+from webinars_web.webinars.models.staged.gtw_registrant import StagedGTWRegistrant
+from webinars_web.webinars.models.staged.hubspot_registrant import StagedHubSpotRegistrant

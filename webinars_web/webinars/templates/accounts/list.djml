@@ -1,0 +1,20 @@
+{% extends "base.djml" %}
+{% load style_guide_tags %}
+
+{% block innards %}
+  <div class="main-column">
+    {% hs_page_header %}
+      {% hs_header %}Webinar Accounts{% end_hs_header %}
+      {% hs_subheader %}All your currently connected accounts{% end_hs_subheader %}
+      {% hs_breadcrumbs %}
+        <a href="/">Webinars</a>
+      {% end_hs_breadcrumbs %}
+    {% end_hs_page_header %}
+
+    {% include "accounts/_list.djml" with accounts=accounts %}
+    <div class="accounts-actions">
+      {% hs_button href="/accounts/new" class="primary" %}Connect {% if accounts %}Another {% endif %} Account{% end_hs_button %}
+    </div>
+  </div>
+{% endblock %}
+

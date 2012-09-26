@@ -1,0 +1,26 @@
+<fieldset>
+  <legend>Associate Landing Page Forms</legend>
+  <div class="clearfix">
+    <label id="associated-forms">Associated Forms</label>
+    <div class="input">
+      <ul class="inputs-list">
+        {% for f in cms_forms %}
+          <li>
+            <label>
+              <input type="checkbox" name="{{f.guid}}" value="{{f.guid}}" />
+              <span>
+                <span class="form-name">{{f.name}}</span>
+                <span class="lps">
+                  {% for lp in f.lps %}
+                    <a href="{{lp.url}}" title="{{lp.name}}" target="_blank"><img src="http://{{static_domain}}/final/img/common/icons/external_link.gif"/></a>
+                  {% endfor %}
+                </span>
+              </span>
+            </label>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</fieldset>
+

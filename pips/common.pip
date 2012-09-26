@@ -1,0 +1,22 @@
+Django==1.3
+wsgiref==0.1.2
+MySQL_python==1.2.3
+PyYAML==3.10
+pymssql==1.0.2
+pycrypto==2.3
+south==0.7.3
+nose==1.1.2
+requests==0.10.7
+dse==3.1.0
+gunicorn==0.14.2
+-e git://github.com/django-debug-toolbar/django-debug-toolbar.git@v0.9.1#egg=django-debug-toolbar-0.9.1
+
+-e ../../packages/hapi_plus
+-e ../../packages/hsdjango
+-e ../../packages/hubspot
+-e ../../packages/webinars_cynq
+-e ../../reusable_webapps/style_guide
+-e ../../reusable_webapps/hsforms
+-e ../../reusable_webapps/segments
+-e .
+

@@ -1,0 +1,7 @@
+-e git://github.com/prior/sanetime.git@v3.2.1#egg=sanetime-3.2.1
+-e git://github.com/prior/webexpy.git@v2.1#egg=webexpy-2.1
+-e git://github.com/prior/cynq.git@v2.3.8#egg=cynq-2.3.8
+-e git://github.com/HubSpot/hapipy.git@v2.5.2#egg=hapipy-2.5.2
+-e git://github.com/prior/hspy.git@v1.5.3#egg=hspy-1.5.3
+-e git://github.com/prior/djextras.git@v1.1.2#egg=djextras-1.1.2
+-e git://github.com/prior/utilspy.git@v0.4#egg=utilspy-0.4

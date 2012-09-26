@@ -1,0 +1,36 @@
+{% extends "base.djml" %}
+{% load style_guide_tags %}
+
+{% block innards %}
+  <div class="main-column">
+    {% hs_page_header %}
+      {% hs_header %}Webinars{% end_hs_header %}
+      {% hs_subheader %}Get started by authorizing this app to talk with your webinar provider{% end_hs_subheader %}
+    {% end_hs_page_header %}
+    {% include "accounts/_form.djml" %}
+  </div>
+  <div class="side-column">
+    <h3>Features</h3>
+    <ul>
+      <li>Auto-register your webinar leads</li>
+      <li>Email and nurture attendees and noshows</li>
+      <li>Report on event attendance</li>
+      <li>Create, edit, and delete events</li>
+      <li>Manage all of this in this one place</li>
+      <li>Aggregate events across accounts</li>
+    </ul>
+    <h3>About this App</h3>
+    <p>
+      HubSpot's webinar app is the perfect companion to your webinar provider.  
+      Simply setup your landing page(s) for your webinar event, and then use
+      this app to associate your webinar event to those landing page(s).  This 
+      app then takes care of getting them registered in your webinar system.  
+      After your event is complete, you can easily view reports on the attendance
+      across all your forms and trigger other actions for each of those leads based
+      on their attendance or non-attendance.
+    </p>
+  </div>
+  {% include "accounts/_warning.djml" %}
+{% endblock %}
+
+

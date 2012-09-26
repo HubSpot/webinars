@@ -1,0 +1,23 @@
+{% if sync.debug and not stage.completed_at and not stage.started_at %}
+  <a href="{{stage.trigger_path}}">
+{% endif %}
+    <li 
+      class="stage {% if stage.completed_at %}completed{% else %}{% if stage.started_at %}started{% else %}{% if stage.parent_sync.debug %}debug{% else %}created{% endif %}{% endif %}{% endif %}" 
+      title="[{{stage.created_at.ny_ndt|date:"g:i:s A"|lower}} - {{stage.started_at.ny_dt|date:"g:i:s A"|lower}} - {{stage.completed_at.ny_dt|date:"g:i:s A"|lower}}]">
+      <div class="duration">{{stage.duration}}</div>
+      <div class="max-size">{{stage.max_size}}</div>
+      {% if not stage.size == None %}
+        <div class="size">{{stage.size}}</div>
+      {% endif %}
+      <div class="offset">+{{stage.offset}}</div>
+      {% if stage.start_last_modified_at %}
+        <div class="start_last_modified_at">{{stage.start_last_modified_at_snippet}}</div>
+      {% else %}
+        {% if stage.last %}
+          <div class="last"></div>
+        {% endif %}
+      {% endif %}
+    </li>
+{% if sync.debug and not stage.completed_at and not stage.started_at %}
+  </a>
+{% endif %}

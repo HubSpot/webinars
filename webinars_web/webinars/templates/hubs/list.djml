@@ -1,0 +1,74 @@
+{% extends "public_base.djml" %}
+
+{% block innards %}
+
+  <div style="max-width:1200px;">
+    <table class="table table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>CMS</th>
+          <th>Current Sync</th>
+          <th>Last Sync</th>
+          <th>Accounts</th>
+          <th>Installed</th>
+          <th>For</th>
+          <th>Uninstalled</th>
+          <th>Flags</th>
+          <th>Product</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for hub in hubs %}
+          <tr>
+            <td>{{hub.id}}</td>
+            <td>
+              {{ hub.cms_domain }}
+              <a style="font-variant:small-caps" href="/market/{{hub.id}}/canvas/{{slug}}/events">e</a>
+              <a style="font-variant:small-caps" href="/leads/app/list?portalId={{hub.id}}">l</a>
+              <a style="font-variant:small-caps" href="/webinars/hubs/{{hub.id}}/syncs">s</a>
+            </td>
+            <td>
+              {% if hub.current_sync %}
+                <a href="/webinars/hub_syncs/{{hub.current_sync.id}}">
+                  <span class="label{% if hub.current_sync.is_bad and not hub.paused and not hub.uninstalled_at %} label-important{% else %}{% if hub.current_sync.is_worrisome and not hub.paused and not hub.uninstalled_at%} label-warning{% endif %}{% endif %}">
+                    {{hub.current_sync.delta.abbr}}
+                  </span>
+                </a>&nbsp; {{ hub.unmothballed_event_count }} 
+              {% endif %}
+            </td>
+            <td>
+              {% if hub.last_sync %}
+                <a href="/webinars/hub_syncs/{{hub.last_sync.id}}">
+                  <span class="label{% if hub.last_sync.forced_stop %} label-inverse{% endif %}">
+                    {{hub.last_sync.delta.abbr}}
+                  </span>
+                </a>&nbsp; <span class="label {% if hub.broken and not hub.paused and not hub.uninstalled_at %} label-important{% endif %} {% if hub.paused %}label-info{% endif %}">{{hub.last_sync.started_at.ny_ndt|date:"m/d h:iA"|lower}}</span>
+              {% endif %}
+            </td>
+            <td>
+              {% for account in hub.accounts_with_event_counts %}
+                <a href="/webinars/accounts/{{account.id}}/syncs">
+                  <img class="icon" src="http://{{static_domain}}/final/img/webinars/{% if account.is_gtw %}gotowebinar{% else %}{% if account.is_webex %}webex{% endif %}{% endif %}.16.png" style="margin-top: -2px;" />
+                </a> {{ account.event_count }} 
+              {% endfor %}
+            </td>
+            <td>{{hub.created_at.ny_ndt|date:"m/d h:iA"|lower}}</td>
+            <td>{{hub.install_delta.d}}d</td>
+            <td>{{hub.uninstalled_at.ny_ndt|date:"m/d h:iA"|lower}}</td>
+            <td>
+              {% if hub.beta %}<span class="label label-info">&#x3d0;eta</span>{% endif %}
+              {% if hub.internal %}<span class="label label-inverse">Internal</span>{% endif %}
+              {% if hub.friends_and_family %}<span class="label label-inverse">F&amp;F</span>{% endif %}
+              {% if hub.churned_at %}<span class="label label-important">Churned</span>&nbsp; {{ hub.churned_at.ny_ndt|date:"m/d" }}{% endif %}
+            </td>
+            <td>{{ hub.product_type|default:"" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}
+
+

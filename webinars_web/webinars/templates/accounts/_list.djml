@@ -1,0 +1,21 @@
+<table class="hs-table zebra-striped accounts">
+  <thead>
+    <tr>
+      <th>Provider</th>
+      <th>Identifier</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for account in accounts %}
+      <tr data-id="{{account.id}}">
+        <td>{{account.account_type.name}}</td>
+        <td>{{account.identifier}}</td>
+        <td class="actions">
+          <a class="edit" href="/accounts/{{account.id}}/edit">edit</a>
+          <a class="next delete" href="#">disconnect</a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

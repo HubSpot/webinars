@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="//{{static_domain}}/final/css/webinars/app.css{{querystring_version_snippet}}" />
+    </head>
+    <body>
+        <div class="webinars">
+            <div id="about_page">
+                <div class="breadcrumb"><a href="javascript:history.back();">&laquo;&nbsp;Back to the app!</a></div>
+                <h1>Webinars App - F.A.Q.</h1>
+                <div>
+                </div>
+           </div>
+        </div>
+    </body>
+</html>
+

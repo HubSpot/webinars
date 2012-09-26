@@ -1,0 +1,14 @@
+{% if sync.debug and not shard.completed_at and not shard.started_at %}
+  <a href="{{shard.trigger_path}}">
+{% endif %}
+    <li 
+      class="shard {% if shard.completed_at %}completed{% else %}{% if shard.started_at %}started{% else %}{% if sync.debug %}debug{% else %}created{% endif %}{% endif %}{% endif %}" 
+      title="[{{shard.created_at.ny_ndt|date:"g:i:s A"|lower}} - {{shard.started_at.ny_dt|date:"g:i:s A"|lower}} - {{shard.completed_at.ny_dt|date:"g:i:s A"|lower}}]">
+      <div class="duration">{{shard.duration}}</div>
+      <div class="size">{{shard.size}}</div>
+      <div class="depth">{{shard.depth}}</div>
+      <div class="section">{{shard.section}}</div>
+    </li>
+{% if sync.debug and not shard.completed_at and not shard.started_at %}
+  </a>
+{% endif %}

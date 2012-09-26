@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <style type="text/css">
+      table td { padding: 5px 10px; }
+      .left { float: left; width: 49.9%; }
+      .right { float: right; width: 49.9%; }
+    </style>
+  </head>
+  <body>
+    <h4>page load SUCCESS</h4>
+    <p></p>
+    <p></p>
+    {%comment%}
+    <h2>Task Runner Durations</h2>
+    <div class="left">
+      <table>
+        <tr><th>at</th><th>duration</th></tr>
+        <tr><td>Avg for past 12 hrs</td><td>{{average_duration_last12}} seconds</td></tr>
+        {% for tr in latest_task_runners %}
+        <tr><td><a href="/webinars/status?task_runner_started_at={{tr.started_at.us}}&task_runner_completed_at={{tr.completed_at.us}}">{{tr.datetime_started_at|date:"M j g:i A"}}</a></td><td>{{tr.pretty_duration}}</td></tr>
+        {% endfor %}
+      </table>
+    </div>
+    <div class="right">
+      <table>
+        <tr>
+          <th>id</th>
+          <th>priority</th>
+          <th>error<th>
+          <th>duration</th>
+        </tr>
+        {% for t in latest_tasks %}
+          <tr>
+            <td>{{t.title}}</td>
+            <td>{{t.priority}}</td>
+            <td>{{t.error}}</td>
+            <td>{{t.pretty_duration}}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {%endcomment%}
+  </body>
+</html>
+

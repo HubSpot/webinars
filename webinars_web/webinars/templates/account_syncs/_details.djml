@@ -1,0 +1,58 @@
+{% load humanize %}
+<div class="sync account {% if sync.completed_at %}completed{% else %}ongoing{% endif %}">
+  <p class="title">
+    <a href="/webinars/account_syncs/{{sync.id}}">{{sync.account.extra}}</a>
+    <a class="action" href="/webinars/accounts/{{sync.account.id}}/syncs/new?debug=False">sync</a>
+    <a class="action" href="/webinars/accounts/{{sync.account.id}}/syncs/new?debug=True">debug</a>
+    <a class="action" href="/webinars/accounts/{{sync.account.id}}/syncs/new?debug=False&force=True">forced</a>
+    <a class="action" href="/webinars/accounts/{{sync.account.id}}/syncs/new?debug=True&force=True">forced+debug</a>
+    <a class="action" href="/webinars/accounts/{{sync.account.id}}/syncs">history</a>
+    <a class="action" href="/market/{{sync.account.hub.id}}/canvas/webinars/events">app</a>
+  </p>
+  <p class="info">
+    {% if sync.forced_stop %}
+      <span class="forcedstop">Forced Stop</span>
+    {% endif %}
+    {% if sync.debug %}
+      <span class="debug">DEBUG</span>
+    {% endif %}
+    <span class="duration">{{sync.s}}s</span>
+    <span class="startstop">[{{sync.started_at.ny_ndt|date:"g:i:s A"|lower}} - {{sync.completed_at.ny_dt|date:"g:i:s A"|lower}}]</span>
+  </p>
+  <ul>
+    <li class="stages phase">
+      <p class="title">Stages</p>
+      <p class="info">
+        <span class="duration">{{sync.staging_s}}s</span>
+        <span class="startstop">[{{sync.started_at.ny_ndt|date:"g:i:s A"|lower}} - {{sync.staged_at.ny_dt|date:"g:i:s A"|lower}}]</span>
+      </p>
+      <ul>
+        <li class="container">
+          <ul>
+            {% for stage in sync.stages %}
+              {% include "event_syncs/_stage.djml" with sync=sync stage=stage %}
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="shards phase">
+      <p class="title">Shards</p>
+      <p class="info">
+        <span class="duration">{{sync.sharding_s}}s</span>
+        <span class="startstop">[{{sync.staged_at.ny_ndt|date:"g:i:s A"|lower}} - {{sync.sharded_at.ny_dt|date:"g:i:s A"|lower}}]</span>
+      </p>
+      <ul>
+        {% for shard in sync.shards %}
+          {% include "event_syncs/_shard.djml" with sync=sync shard=shard %}
+        {% endfor %}
+      </ul>
+    </li>
+  </ul>
+  <div style="clear:both;"></div>
+  {% for event_sync in sync.event_syncs %}
+    {% include "event_syncs/_details.djml" with sync=event_sync%}
+  {% endfor %}
+</div>
+
+

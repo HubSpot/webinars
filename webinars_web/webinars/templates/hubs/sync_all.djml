@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <h4>Triggering Syncs on All Hubs That Need Syncing</h4>
+    <p></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Hub ID</th>
+          <th>Current Sync Started At</th>
+          <th>Last Sync Started At</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for sync in syncs %}
+          <tr>
+            <td>{{ sync.hub.id }}</td>
+            <td><a href="{{sync.info_url}}">{{ sync.started_at.ny_ndt|date }}</a></td>
+            <td><a href="{{sync.hub.last_sync.info_url}}">{{ sync.hub.last_sync.started_at.ny_ndt|date }}</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
+

@@ -1,0 +1,135 @@
+{% load style_guide_tags %}
+
+<form method="post" class="event hs-form">
+  {% for hidden in form.hidden_fields %}
+    {{ hidden }}
+  {% endfor %}
+
+  {% for key, value in form.hidden_inputs.items %}
+    <input type="hidden" id="id_{{key}}" value="{{value}}" />
+  {% endfor %}
+
+  {% if form.non_field_errors %}
+    <div class="hs-block-message error">
+      {% for err in form.non_field_errors %}
+        <p><strong>{{err}}</strong></p>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="event-fieldset-wrapper">
+
+    <fieldset class="details">
+
+      <div class="field{% if form.account.errors %} error{% endif %}">
+        {{ form.account.label_tag }}
+        <div class="input">
+          {{form.account}}
+          {% if form.account.errors %}
+            <span class="help-inline">{% for e in form.account.errors %}{{e}}{% endfor %}</span>
+          {% else %}{% if form.account.help_text %}
+            <span class="help-inline">{{ form.account.help_text }}</span>
+          {% endif %}{% endif %}
+        </div>
+      </div>
+
+      {% comment %} TextField {% endcomment %}
+      <div class="field{% if form.title.errors %} error{% endif %}">
+        {{ form.title.label_tag }}
+        <div class="input">
+          {{form.title}}
+          {% if form.title.errors %}
+            <span class="help-inline">{% for e in form.title.errors %}{{e}}{% endfor %}</span>
+          {% else %}{% if form.title.help_text %}
+            <span class="help-inline">{{ form.title.help_text }}</span>
+          {% endif %}{% endif %}
+        </div>
+      </div>
+
+      <div class="field{% if form.starts_at_ndt.errors %} error{% endif %}">
+        {{ form.starts_at_ndt.label_tag }}
+        <div class="input">
+          {{form.starts_at_ndt}}
+          {% if form.starts_at_ndt.errors %}
+            <span class="help-inline">{% for e in form.starts_at_ndt.errors %}{{e}}{% endfor %}</span>
+          {% else %}{% if form.starts_at_ndt.help_text %}
+            <span class="help-inline">{{ form.starts_at_ndt.help_text }}</span>
+          {% endif %}{% endif %}
+        </div>
+      </div>
+
+      {% comment %} TextField {% endcomment %}
+      <div class="field{% if form.duration.errors %} error{% endif %}">
+        {{ form.duration.label_tag }}
+        <div class="input">
+          {{form.duration}}
+          {% if form.duration.errors %}
+            <span class="help-inline">{% for e in form.duration.errors %}{{e}}{% endfor %}</span>
+          {% else %}{% if form.duration.help_text %}
+            <span class="help-inline">{{ form.duration.help_text }}</span>
+          {% endif %}{% endif %}
+        </div>
+      </div>
+
+      {% comment %} TextField {% endcomment %}
+      <div class="field{% if form.description.errors %} error{% endif %}">
+        {{ form.description.label_tag }}
+        <div class="input">
+          {{form.description}}
+          {% if form.description.errors %}
+            <span class="help-inline">{% for e in form.description.errors %}{{e}}{% endfor %}</span>
+          {% else %}{% if form.description.help_text %}
+            <span class="help-inline">{{ form.description.help_text }}</span>
+          {% endif %}{% endif %}
+        </div>
+      </div>
+
+      <div class="hs-block-message warning recommendation">
+        <p><strong>We recommend creating a new form for each webinar.</strong></p>
+      </div>
+
+    </fieldset>
+
+    <fieldset class="cms-forms">
+      <a class="new-form" href="http://{{form.hub.cms_domain}}/app/landing-pages/Default.aspx?CreateNew=true" target="_blank">Create New Form & LP</a>
+      <h4>Associate Your Webinar Registration Form</h4>
+      {% comment %} TextField {% endcomment %}
+      <div class="field{% if form.cms_forms.errors %} error{% endif %}">
+        {{ form.cms_forms.label_tag }}
+        <div class="input">
+          {{form.cms_forms}}
+          {% if form.cms_forms.errors %}
+            <span class="help-inline">{% for e in form.cms_forms.errors %}{{e}}{% endfor %}</span>
+          {% else %}{% if form.cms_forms.help_text %}
+            <span class="help-inline">{{ form.cms_forms.help_text }}</span>
+          {% endif %}{% endif %}
+        </div>
+      </div>
+
+      {% comment %} TextField {% endcomment %}
+      <div class="field{% if form.sync_leads_for_all_time.errors %} error{% endif %}">
+        {{ form.sync_leads_for_all_time.label_tag }}
+        <div class="input">
+          {{form.sync_leads_for_all_time}}
+          {% if form.sync_leads_for_all_time.errors %}
+            <span class="help-inline">{% for e in form.sync_leads_for_all_time.errors %}{{e}}{% endfor %}</span>
+          {% else %}{% if form.sync_leads_for_all_time.help_text %}
+            <span class="help-inline">{{ form.sync_leads_for_all_time.help_text }}</span>
+          {% endif %}{% endif %}
+          <p class="form-select-warning" style="display:none">
+            <span class="label warning">warning</span> If you've been re-using any of the selected forms above, then you should avoid this option.  It will register <strong>all</strong> leads that have <strong>ever</strong> converted on this form as registrants for your webinar.
+          </p>
+        </div>
+      </div>
+    </fieldset>
+
+  </div>
+  
+  <div class="actions">
+    <span class="success_guide">Make the most of this new webinar - <a href="/success_guide">Success Guide</a></span>
+    <input type="submit" class="hs-button primary" value="Save" />
+    {% hs_button href="/events" type="reset" class="secondary" %}Cancel{% end_hs_button %}
+  </div>
+
+</form>
+

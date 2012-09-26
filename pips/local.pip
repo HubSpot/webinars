@@ -1,0 +1,12 @@
+-e ../../../../github/sanetime
+-e ../../../../github/webexpy
+-e ../../../../github/cynq
+-e ../../../../github/hapipy
+-e ../../../../github/hspy
+-e ../../../../github/djextras
+-e ../../../../github/utilspy
+
+# this is included via puppet on all our puppetized boxes
+cython==0.15.1
+https://bitbucket.org/denis/gevent/get/745149cd866d.tar.gz
+

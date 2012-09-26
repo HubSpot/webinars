@@ -1,0 +1,14 @@
+# REMOVED link to HubSpot internal cheeseshop
+--extra-index-url http://d.pypi.python.org/simple/
+-e .
+
+https://github.com/django-debug-toolbar/django-debug-toolbar/tarball/v0.9.1
+
+gunicorn==0.14.2
+
+-e git+https://github.com/nose-devs/nose#egg=nose
+MySQL-python==1.2.3
+Cython
+bpython
+https://bitbucket.org/denis/gevent/get/745149cd866d.tar.gz
+django-template-repl

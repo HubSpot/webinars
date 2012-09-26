@@ -1,0 +1,87 @@
+{% load style_guide_tags %}
+
+<body>
+  <hs:link type="text/css" rel="stylesheet" href="//{{nonlocal_static_domain}}{{version_snippet}}/bundles/style_guide.css" />
+  <hs:link type="text/css" rel="stylesheet" href="//{{static_domain}}/final/css/webinars/app.css{{querystring_version_snippet}}" />
+  {% comment %}
+  <hs:link type="text/css" rel="stylesheet" href="//{{static_domain}}/final/css/common/bootstrap-sandbox.1080.css" />
+  {% endcomment %}
+
+  {% comment %}
+  <header class="hs-main"><h1>Webinars</h1></header>
+  <hs:title subtitle="Your HubSpot Webinar Integration">Webinars</hs:title>
+  {% endcomment %}
+  {% comment %}
+  <div id="t">
+    <div id="b">
+      <div class="container">
+        <div class="page-header">
+          <h1>{% block title %}Webinars{% endblock %} <small>{% block subtitle %}Your HubSpot Webinar Integration{% endblock %}</small></h1>
+        </div>
+  {% endcomment %}
+
+  <div class="webinars">
+    {% block innards %}{% endblock %}
+  </div>
+  {% comment %}
+      </div>
+    </div>
+  </div>
+  {% endcomment %}
+
+  {%comment%}
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/final/js/common/core.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/final/js/common/mootools/mootools.1-2-1.lite.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/final/js/common/legacy_core.js"></hs:script> 
+  {%endcomment%}
+
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/bootstrap-dropdown.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/alerts.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/twipsy.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/popover.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/range-picker.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/chosen/chosen.jquery.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/jquery.time-picker.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/jquery.keyhandler.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/jquery.hs-dropdown.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/compiled/iphone-style-checkboxes.js{{querystring_version_snippet}}"></hs:script> 
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/style-guide/js/pill-buttons.js{{querystring_version_snippet}}"></hs:script> 
+
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/final/js/common/jquery/plugins/timeago/9.3/jquery.timeago.js{{querystring_version_snippet}}"></hs:script>
+
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/final/js/common/jquery/plugins/jquery.datatables-1.8.2.js{{querystring_version_snippet}}"></hs:script>
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/final/js/common/jquery/plugins/jquery.datatables.custom-types.js{{querystring_version_snippet}}"></hs:script>
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}/final/js/common/jquery/plugins/jquery.datatables-hubspot-paging.js{{querystring_version_snippet}}"></hs:script>
+
+  {%comment%}
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/style-guide/js/bootstrap-scrollspy.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/style-guide/js/highcharts/highcharts.src.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/style-guide/js/highcharts/highcharts.ext.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/style-guide/js/highcharts/highcharts.theme.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/style-guide/js/application.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/style-guide/js/google-code-prettify/prettify.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/final/js/common/jquery/plugins/jquery.datatables.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/final/js/common/jquery/plugins/jquery.datatables.custom-types.js"></hs:script> 
+  <hs:script type="text/javascript" src="//static.hubspotqa.com/final/js/common/jquery/plugins/jquery.datatables-hubspot-paging.js"></hs:script> 
+  {%endcomment%}
+
+
+  {% comment %}
+  <hs:script type="text/javascript" src="//{{static_domain}}/final/js/webinars/app.js"></hs:script>
+  {% endcomment %}
+
+  <hs:script type="text/javascript" src="//{{nonlocal_static_domain}}{{version_snippet}}/bundles/highcharts.js"></hs:script>
+  <hs:script type="text/javascript" src="//{{static_domain}}/final/js/webinars/app.js{{querystring_version_snippet}}"></hs:script>
+  
+</body>
+
+{%comment%}
+    {% hs_row type="small-sidebar-layout" %}
+      {% hs_main %}
+        {% block innards %}{% endblock %}
+      {% end_hs_main %}
+      {% hs_right_sidebar %}
+        {% block sidebar %}{% endblock %}
+      {% end_hs_right_sidebar %}
+    {% end_hs_row %}
+{%endcomment%}

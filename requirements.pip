@@ -1,0 +1,5 @@
+# REMOVED link to HubSpot internal cheeseshop
+--extra-index-url http://d.pypi.python.org/simple/
+-e .
+
+

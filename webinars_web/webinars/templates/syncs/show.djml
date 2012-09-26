@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    {% for account_sync in hub_sync.account_syncs %}
+      <h3>AccountSync [{{account_sync.account.extra}}]</h3>
+      <p>
+        <strong>Stages:</strong>
+        {% for stage in account_sync.stages %}
+          {% if stage.completed_at %}
+            {{stage.size}}
+          {% else %}
+            <a href="{{stage.trigger_path}}">?</a>
+          {% endif %}
+        {% endfor %}
+      </p>
+      <p>
+        <strong>Shards:</strong>
+        {% for shard in account_sync.shards %}
+          {% if shard.completed_at %}
+            {{shard.section}}/{{shard.depth}}
+          {% else %}
+            <a href="{{shard.trigger_path}}">{{shard.section}}/{{shard.depth}}</a>
+          {% endif %}
+        {% endfor %}
+      </p>
+    {% endfor %}
+
+    <h6>HubSync</h6>
+    <dl>
+      <dt>id</dt><dd>{{hub_sync.id}}</dd>
+      <dt>started_at</dt><dd>{{hub_sync.started_at.ny_ndt|date}}</dd>
+      <dt>completed_at</dt><dd>{{hub_sync.completed_at.ny_ndt|date}}</dd>
+      <dt>forced_stop</dt><dd>{{hub_sync.forced_stop}}</dd>
+      <dt>visible</dt><dd>{{hub_sync.visible}}</dd>
+      <dt>debug</dt><dd>{{hub_sync.debug}}</dd>
+    </dl>
+    <h6>Hub</h6>
+    <dl>
+      <dt>id</dt></dd>{{hub.id}}</dd>
+      <dt>last_sync</dt><dd><a href="">{{hub.last_sync.id}}</a></dd>
+      <dt>current_sync</dt><dd><a href="">{{hub.current_sync.id}}</a></dd>
+      <dt>sync_lock</dt><dd>{{hub.sync_lock}}</dd>
+    </dl>
+  </body>
+</html>
+

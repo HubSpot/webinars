@@ -1,0 +1,55 @@
+- model: webinars.event
+  pk: 1
+  fields: 
+    account: 1
+    remote_id: 'fake0001'
+    title: 'How to Become an Expert in Local Marketing'
+    description: 'Are you using online channels to leverage the power of local marketing? Optimizing for geo-targeted keywords is great for SEO purposes, but might not be enough to stay competitive.  As a local business you have a tremendous opportunity to beat the competition using online channels such as Google Places, Yahoo Local, and Foursqaure for local marketing.'
+    starts_at: '2011-07-07 13:00:00'
+    duration: 60
+
+- model: webinars.event
+  pk: 2
+  fields: 
+    account: 1
+    remote_id: 'fake0002'
+    title: '7 Google Tools to Improve Marketing Effectiveness'
+    description: 'Google has many assets that businesses can overlook or forget about. But as a marketer, you cannot afford to make this mistake. That is why we created a comprehensive list of Google''s properties that can improve your marketing.'
+    starts_at: '2011-07-24 13:00:00'
+    duration: 60
+    attended_campaign_guid: 'FAKEGUID'
+    missed_campaign_guid: 'FAKEGUID'
+
+- model: webinars.event
+  pk: 3
+  fields: 
+    account: 1
+    remote_id: 'fake0003'
+    title: 'How to Rapidly Grow Your Business with Content Marketing'
+    description: 'In this exclusive webinar, Michael Stelzner, author of the new book Launch: How to Quickly Propel Your Business Beyond the Competition, and HubSpot''s CMO, Mike Volpe, discuss a proven technique to quickly grow a loyal following AND your business.  And it''s not just any strategy—it''s the very one Stelzner used to transform Social Media Examiner into one of the world''s top business blogs.'
+    starts_at: '2011-08-13 13:00:00'
+    duration: 60
+
+- model: webinars.event
+  pk: 4
+  fields: 
+    account: 1
+    remote_id: 'fake0004'
+    title: '5 Steps for Awesome Social Media Lead Generation'
+    description: 'For B2B companies looking to grow their business, social media marketing is about one thing: leads. Learn a 5-step process to do it!'
+    starts_at: '2011-10-08 13:00:00'
+    duration: 60
+    attended_campaign_guid: 'FAKEGUID'
+    missed_campaign_guid: 'FAKEGUID'
+
+- model: webinars.event
+  pk: 5
+  fields: 
+    account: 1
+    remote_id: 'fake0005'
+    title: 'Marketing Metrics Workshop Series'
+    description: 'Learn the basics on the terms, metrics and tactics marketers need as they improve the visibility and impact of their campaigns.'
+    starts_at: '2011-09-15 13:00:00'
+    duration: 60
+    attended_campaign_guid: 'FAKEGUID'
+

@@ -1,0 +1,22 @@
+<div class="menu">
+
+  {% if selected == 'accounts' %}
+    <span>Accounts</span>
+  {% else %}
+    <span><a href="/accounts">Accounts</a></span>
+  {% endif %}
+
+  {% if selected == 'events' %}
+    <span>Events</span>
+  {% else %}
+    <span><a href="/events">Events</a></span>
+  {% endif %}
+
+  {% if selected == 'settings' %}
+    <span>Settings</span>
+  {% else %}
+    <span><a href="/settings">Settings</a></span>
+  {% endif %}
+
+</div>
+

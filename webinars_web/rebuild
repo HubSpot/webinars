@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# truncate ALL tables
+./manage.py sqlflush | ./manage.py dbshell
+
+# clear all apps I'm able to 
+#   (can't get at django_content_type-- so truncating it 
+#    with the previous statement before doing this one)
+./manage.py sqlclear webinars | ./manage.py dbshell
+
+# initial sync
+./manage.py syncdb
+
+# initial seed
+#./manage.py loaddata demo/accounts.yaml
+
+# initial webinar sync
+#./manage.py sync -b 28306 -p webex -o events -o forms -o registrants

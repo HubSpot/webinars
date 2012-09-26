@@ -1,0 +1,77 @@
+{% load humanize %}
+<html>
+  <head>
+    <style type="text/css">
+      html, body { background-color:#eee; color:#333; font-size:14px;}
+      li { list-style:none; }
+      p { margin:2px; }
+      p.title, p.info { font-variant:small-caps; float:left; margin-right:20px}
+      p.title { font-weight:bold; }
+      p.info { font-size:12px; }
+      div>ul, li>ul { clear:both }
+      table { border-collapse: collapse; }
+      td,th { padding: 5px 10px; border: 2px solid #aaa; }
+    </style>
+  </head>
+
+  <body>
+
+    <h2>Parcel Timing Stats</h2>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th colspan="3">wait</th>
+          <th colspan="3">work</th>
+        </tr>
+        <tr>
+          <th>span</th>
+          <th>avg</th>
+          <th>min</th>
+          <th>max</th>
+          <th>avg</th>
+          <th>min</th>
+          <th>max</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for k,v in times.items %}
+          <tr>
+            <td>{{k}}</td>
+            <td>{{v.wait.0|intcomma}} ms</td>
+            <td>{{v.wait.1|intcomma}} ms</td>
+            <td>{{v.wait.2|intcomma}} ms</td>
+            <td>{{v.work.0|intcomma}} ms</td>
+            <td>{{v.work.1|intcomma}} ms</td>
+            <td>{{v.work.2|intcomma}} ms</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2>Parcel Backlog (At this Moment)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>waiting to be worked</th>
+          <th>being worked now</th>
+          <th>worked</th>
+          <th>max wait time for unstarted work</th>
+          <th>max work time for started but uncompleted work</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td>{{parcel_snapshot_counts.0}}</td>
+            <td>{{parcel_snapshot_counts.1}}</td>
+            <td>{{parcel_snapshot_counts.2}}</td>
+            <td>{{parcel_snapshot_counts.3|intcomma}} ms</td>
+            <td>{{parcel_snapshot_counts.4|intcomma}} ms</td>
+          </tr>
+      </tbody>
+    </table>
+
+  </body>
+</html>
+
+

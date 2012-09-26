@@ -1,0 +1,11 @@
+<html>
+  <head>
+    <style type="text/css">
+      {% include "event_syncs/_css.css" %}
+    </style>
+  </head>
+  <body>
+    {% include "account_syncs/_details.djml" with sync=sync %}
+  </body>
+</html>
+

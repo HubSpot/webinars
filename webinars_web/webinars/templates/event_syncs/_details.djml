@@ -1,0 +1,90 @@
+{% load humanize %}
+<div class="sync event {% if sync.completed_at %}completed{% else %}ongoing{% endif %}">
+  <p class="title">
+    <a href="/webinars/event_syncs/{{sync.id}}">{{sync.event.title}}</a>
+    <a class="action" href="/webinars/events/{{sync.event.id}}/syncs/new?debug=False">sync</a>
+    <a class="action" href="/webinars/events/{{sync.event.id}}/syncs/new?debug=True">debug</a>
+    <a class="action" href="/webinars/events/{{sync.event.id}}/syncs/new?debug=False&force=True">forced</a>
+    <a class="action" href="/webinars/events/{{sync.event.id}}/syncs/new?debug=True&force=True">forced+debug</a>
+    <a class="action" href="/webinars/events/{{sync.event.id}}/syncs">history</a>
+    <a class="action" href="/market/{{sync.parent.account.hub.id}}/canvas/webinars/events/{{sync.event.id}}">event</a>
+  </p>
+  <p class="info">
+      {% if sync.forced_stop %}
+        <span class="forcedstop">Forced Stop</span>
+      {% endif %}
+      {% if sync.debug %}
+        <span class="debug">DEBUG</span>
+      {% endif %}
+      <span class="duration">{{sync.s}}s</span>
+      <span class="startstop">[{{sync.created_at.ny_ndt|date:"g:i:s A"|lower}} - {{sync.completed_at.ny_dt|date:"g:i:s A"|lower}}]</span>
+    </p>
+  </p>
+  <ul>
+    <li class="pre phase">
+      Created At: {{sync.created_at.ny_ndt|date:"g:i:s A"|lower}}
+      {% if sync.started_at %}
+        Started At: {{sync.started_at.ny_ndt|date:"g:i:s A"|lower}}
+      {% else %} {% if sync.debug %}
+        <a href="{{sync.kickoff_path}}">kickoff</a>
+      {% else %}
+        unstarted
+      {% endif %} {% endif %}
+    </li>
+    <li class="stages phase">
+      <p class="title">Stages</p>
+      <p class="info">
+        <span class="duration">{{sync.staging_s}}s</span>
+        <span class="startstop">[{{sync.started_at.ny_ndt|date:"g:i:s A"|lower}} - {{sync.staged_at.ny_dt|date:"g:i:s A"|lower}}]</span>
+      </p>
+      <ul>
+        <li class="webex">
+          <p class="title">Webex</p>
+          <ul>
+            {% for stage in sync.webex_stages %}
+              {% include "event_syncs/_stage.djml" with sync=sync stage=stage %}
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="gtw">
+          <p class="title">GTW</p>
+          <ul>
+            {% for stage in sync.gtw_stages %}
+              {% include "event_syncs/_stage.djml" with sync=sync stage=stage %}
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="hubspot">
+          <p class="title">HubSpot</p>
+          <ul>
+            {% for stages, cms_form in sync.hubspot_stages_cmsforms %}
+              <li class="form container">
+              <p class="title">{{cms_form.name}}</p>
+                <ul>
+                  {% for stage in stages %}
+                    {% include "event_syncs/_stage.djml" with sync=sync stage=stage %}
+                  {% endfor %}
+                </ul>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li class="shards phase">
+      <p class="title">Shards</p>
+      <p class="info">
+        <span class="duration">{{sync.sharding_s}}s</span>
+        <span class="startstop">[{{sync.staged_at.ny_ndt|date:"g:i:s A"|lower}} - {{sync.sharded_at.ny_dt|date:"g:i:s A"|lower}}]</span>
+      </p>
+      <ul>
+        {% for shard in sync.shards %}
+          {% include "event_syncs/_shard.djml" with sync=sync shard=shard %}
+        {% endfor %}
+      </ul>
+    </li>
+  </ul>
+  <div style="clear:both;"></div>
+</div>
+
+

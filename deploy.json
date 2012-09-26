@@ -1,0 +1,23 @@
+{  
+    "name" : "webinars_web",
+    "type" : "django-fabric",
+    "loadBalancer" : "app",
+    "app_root": "/webinars",
+    "status_url": "/webinars/status",
+    "description" : "The Webinars App",
+    "success_string": "SUCCESS",
+    "rodan_config": {
+        "family": "marketplace"
+    },
+    "gunicorn": {
+        "worker_class": "gevent"
+    },
+    "jenkins": {
+        "build": "webinars_web",
+        "deploy": "webinars_deploy"
+    },
+    "servers": {
+        "qa": [],
+        "prod": []
+    }
+}

@@ -1,0 +1,12 @@
+<div class="sync" data-last_sync_us="{% include "events/_sync_time.djml" %}">
+  <div class="status" style="display:{% if triggered %}none{% else %}block{% endif %};">
+    {% if last_synced_at %}
+      last synced <span class="timeago" title="{{last_synced_at|date:"c"}}">{{last_synced_at}}</span> <a href="/events/sync">resync</a> 
+    {% else %}
+      not yet synced <a href="/events/sync">sync</a> 
+    {% endif %}
+  </div>
+  <div class="working" style="display:{% if triggered %}block{% else %}none{% endif %};">
+    syncing data... <img src="http://{{static_domain}}/final/img/common/spinner/spinner.16x16.999999.ffffff.gif" />
+  </div>
+</div>

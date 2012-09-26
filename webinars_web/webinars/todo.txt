@@ -1,0 +1,64 @@
+re-implement csrf
+do something with webinar events that linger on our system, but have been deleted remotely -- either have them automatically "archived", or have them shown as having lost their connection somehow
+remove all ".all()" model calls-- that should never really be used!
+account validation and sync on news/edits
+need to clean house on all utc/timezone bullshit
+need to deal much better with our true form<->page -- showing just unique forms, and then maybe a listing of landing pages that use those forms
+
+fix pywebex to get rid of redundant naming (delete_event, create_event all under event controller)
+
+
+
+events
+======
+webex <=> local
+
+    full events sync:
+        pull all webex_events
+        pull all local_events
+        insert local_event where webex_event doesn't exist locally
+        delete local_event where local_event doesn't exist remotely and it's been previously synced
+        insert webex_event where local_event doesn't exist remotely (only for future events)
+        for those that exist in both:
+            if updated_at > last_synced_at:
+                update remote with local
+            else
+                update local with remote
+
+    single event sync: follow same methods
+
+leads (for a single event)
+=====
+webex <=> local
+
+    full leads sync:
+        pull all webex_leads
+        pull all local_leads
+        insert local_leads where webex_lead doesn't exist locally
+        delete local_leads where local_lead doesn't exist remotely and it's been previously synced
+        insert webex_leads where local_lead doesn't exist remotely (only for future events)
+        for those that exist in both:
+            if updated_at > last_synced_with_webinar_at:
+                update remote with local
+            else
+                update local with remote
+
+    single lead sync: follow same methods
+
+
+local <=> hubspot
+
+    full leads sync:
+        pull all hubspot_leads
+        pull all local_leads
+        insert local_leads where hubspot_lead doesn't exist locally
+        insert hubspot_leads where local_lead doesn't exist remotely
+        for those that exist in both:
+            if updated_at > last_synced_with_hubspot_at:
+                update remote with local
+            else
+                update local with remote
+
+    single lead sync: follow same methods
+
+

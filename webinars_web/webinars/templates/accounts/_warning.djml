@@ -1,0 +1,30 @@
+{% load style_guide_tags %}
+
+<div style="display:none;">
+
+  <div id="account-connect-webex-warning" class="hs-fancybox">
+    <h4>Are You Sure?<h4>
+    <p>
+      After connecting your account, this app will ensure all registrants and attendees from all of your past (up to 90 days in the past) and all future webinars become leads inside of HubSpot.  
+      A conversion event will be logged against these leads for each of the webinar events they have or had registered for.
+    </p>
+
+    <h3>Are you sure you want to connect this Webex account?</h3>
+    {% hs_button href="#" class="primary confirm-account-connect" %}Yes, Connect!{% end_hs_button %}
+    {% hs_button href="#" class="secondary cancel-account-connect" %}No, Forget it{% end_hs_button %}
+  </div>
+
+  <div id="account-connect-gtw-warning" class="hs-fancybox">
+    <h4>Are You Sure?<h4>
+    <p>
+      You will first be taken to GoToWebinar, where you will need to confirm your identity and authorization.
+      After authorizing your account, this app will ensure all registrants and attendees from all of your past and future webinars become leads inside of HubSpot.  
+      A conversion event will be logged against these leads for each of the webinar events they have or had registered for.
+    </p>
+
+    <h3>Are you sure you want to continue connecting your GoToWebinar account?</h3>
+    {% hs_button href="#" class="primary confirm-account-connect" %}Yes, Continue{% end_hs_button %}
+    {% hs_button href="#" class="secondary cancel-account-connect" %}No, Forget it{% end_hs_button %}
+  </div>
+
+</div>

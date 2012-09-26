@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <h4>Sync Stage Filled!</h4>
+    <h6>{{done_stage.account.username}} / {{done_stage.account.extra}}  [{{done_stage.offset}},{{done_stage.max_size}},{{done_stage.size}}]</h6>
+    <p></p>
+    {% if new_stages %}
+      {% for new_stage in new_stages %}
+        <p>{{new_stage.trigger_path}} [
+          <a href="{{new_stage.trigger_path}}">direct</a> 
+          {% if postbin %} | <a href="{{new_stage.postbin_partial_path}}{{postbin}}">postbin</a>> {% endif %}
+          | <a href="{{new_stage.taskqueue_path}}">taskqueue</a> ]
+        </p>
+      {% endfor %}
+    {% else %}
+      <p>Already in progress-- this hit triggered nothing</p>
+    {% endif %}
+  </body>
+</html>

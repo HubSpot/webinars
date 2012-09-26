@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <h6>HubSync</h6>
+    <dl>
+      <dt>id</dt><dd>{{sync.id}}</dd>
+      <dt>started_at</dt><dd>{{sync.started_at.ny_ndt|date}}</dd>
+      <dt>completed_at</dt><dd>{{sync.completed_at.ny_ndt|date}}</dd>
+      <dt>forced_stop</dt><dd>{{sync.forced_stop}}</dd>
+      <dt>visible</dt><dd>{{sync.visible}}</dd>
+      <dt>debug</dt><dd>{{sync.debug}}</dd>
+    </dl>
+  </body>
+</html>
+
+

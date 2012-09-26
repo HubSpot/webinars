@@ -1,0 +1,2 @@
+recursive-include webinars_web/ *.djml
+recursive-include webinars_web/ *.css

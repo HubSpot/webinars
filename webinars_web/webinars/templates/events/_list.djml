@@ -1,0 +1,79 @@
+<table class="hs-table zebra-striped events {% if past %}past{% else %}future{% endif %}">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>
+        {% if past %}
+          Started 
+        {% else %}
+          Starts 
+        {% endif %}
+      </th>
+      <th class="length">Length</th>
+      <th class="registrants"><a class="hs-popover" title="Registrants" data-content="The number of unique emails that registered for this event." data-placement="above">Registrants</a></th>
+      {% if past %}<th class="attendants"><a class="hs-popover" title="Attendants" data-content="The number of unique emails that registered AND attended this event (even if it was only for a minute)." data-placement="above">Attendees</a></th>{% endif %}
+      <th class="lps">Landing Pages</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if events|length == 0 and empty_callout == "true" %}
+      <tr><td colspan="6" class="empty"></td></tr>
+    {% else %}
+      {% for event in events %}
+      <tr data-id="{{event.id}}" {% if event.current_sync and event.current_sync.visible %} class="syncing"{% endif %}>
+          <td class="title"><a href="/events/{{event.id}}" title="{{event.title}}">{{event.title_truncated}}</a></td>
+          <td class="starts_at">{{event.starts_at.dt|date:"M j Y g:i A"}}</td>
+          <td class="length">{{event.duration_short_string}}</td>
+          <td class="registrants">
+            {% if event.unknowable_registrants %}
+              <a class="hs-tooltip" title="Webex retains registrant and attendee information for only 90 days after an event, and we unfortunately became aware of this event after that window expired.">?</a>
+            {% else %}
+              {{event.registrant_count}}
+            {% endif %}
+          </td>
+          {% if past %}
+            <td class="attendants">
+              {% if event.unknowable_registrants %}
+                <a class="hs-tooltip" title="Webex retains registrant and attendee information for only 90 days after an event, and we unfortunately became aware of this event after that window expired.">?</a>
+              {% else %}
+                {{event.attendant_count}}
+              {% endif %}
+            </td>
+          {% endif %}
+          <td class="lps">
+            {% if event.landing_pages|length == 0 %}
+              {% if past %}
+                <img src="http://{{static_domain}}/img/i/warning-grey.gif" />
+              {% else %}
+                <img src="http://{{static_domain}}/img/i/warning.gif" />
+              {% endif %}
+            {% else %}
+              {% for lp in event.landing_pages %}
+                <a href="{{lp.url}}" title="{{lp.name}}" target="_blank">
+                  <img src="http://{{static_domain}}/final/img/common/icons/external_link.gif"/>
+                </a>
+              {% endfor %}
+            {% endif %}
+          </td>
+            {% comment %}
+          <td>
+            {% if event.attended_campaign_guid or event.missed_campaign_guid %}
+              <img src="http://static.hubspot.com/img/i/tick.gif" />
+            {% else %}
+              <img src="http://static.hubspot.com/img/i/warning.gif" />
+            {% endif %}
+          </td>
+            {% endcomment %}
+          <td class="actions">
+            {% if not past %}
+              <a class="edit" href="/events/{{event.id}}/edit">edit</a>
+              {% if event.deletable %} <a class="next delete" href="#event-delete-warning">delete</a>{% endif %}
+            {% endif %}
+            <span class="syncing"><span>syncing</span><img src="http://{{static_domain}}/final/img/common/spinner/spinner.16x16.140e6d.cccccc.gif" /></span>
+          </td>
+        </tr>
+      {% endfor %}
+      {% endif %}
+  </tbody>
+</table>

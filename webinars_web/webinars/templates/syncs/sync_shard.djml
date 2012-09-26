@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <h4>Sync Shard Synced!</h4>
+    <p></p>
+    {% if sync_shard.completed_at %}
+      <p> Depth: {{sync_shard.depth}},  Section: {{sync_shard.section}} </p>
+      {% if sync_shard.sync_job.completed_at %}
+        <h6>All shards complete!</h6>
+        {% for child_stage in sync_shard.sync_job.child_stages %}
+          <p>{{child_stage.trigger_path}} [
+            <a href="{{child_stage.trigger_path}}">direct</a> 
+            {% if postbin %} | <a href="{{child_stage.postbin_partial_path}}{{postbin}}">postbin</a>> {% endif %}
+            | <a href="{{child_stage.taskqueue_path}}">taskqueue</a> ]
+          </p>
+        {% endfor %}
+      {% endif %}
+    {% else %}
+      <p>Already in progress-- this hit triggered nothing</p>
+    {% endif %}
+  </body>
+</html>

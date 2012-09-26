@@ -1,0 +1,49 @@
+- model: webinars.accounttype
+  pk: 1
+  fields:
+    name: Webex
+    username_label: Username
+    extra_username_label: SiteName
+    listing_priority: 1
+    can_api_create_event: true
+    can_api_load_event: true
+    can_api_register_user: true
+    can_api_report_views: true
+
+- model: webinars.accounttype
+  pk: 2
+  fields:
+    name: GoToWebinar
+    username_label: ??
+    extra_username_label: ???
+    listing_priority: 2
+    can_api_create_event: true
+    can_api_load_event: true
+    can_api_register_user: true
+    can_api_report_views: true
+
+- model: webinars.accounttype
+  pk: 3
+  fields:
+    name: ReadyTalk
+    username_label: ??
+    extra_username_label: ???
+    listing_priority: 3
+    can_api_create_event: true
+    can_api_load_event: true
+    can_api_register_user: true
+    can_api_report_views: true
+
+- model: webinars.accounttype
+  pk: 4
+  fields:
+    name: Infinite
+    username_label: ??
+    extra_username_label: ???
+    listing_priority: 4
+    can_api_create_event: true
+    can_api_load_event: true
+    can_api_register_user: true
+    can_api_report_views: true
+
+

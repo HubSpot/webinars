@@ -1,0 +1,191 @@
+{% load style_guide_tags %}
+
+<form method="post" id="webinars-account-form" class="account hs-form {% if form.current_account_type_id == 1 %}webex{% else %}gtw{% endif %}">
+
+  {% comment %}
+
+  {% for hidden in form.hidden_fields %}
+    {{ hidden }}
+  {% endfor %}
+
+  {% endcomment %}
+  {% if form.non_field_errors %}
+    <div class="hs-block-message error badcreds">
+      <a class="close" href="#">&nbsp;</a>
+      <p><strong>Problem with Webex Account</strong></p>
+      <ul>
+        {% for err in form.non_field_errors %}
+          <li>{{err}}</li>
+        {% endfor %}
+
+  {% comment %}
+        <li>Did you mispell your username, password, or sitename?</li>
+        <li>You must use the same credentials you use when you log into your webex domain</li>
+        <li>This app works only with the Webex Webinar product (>25 attendees).  It does NOT work with the Webex Meeting account (25 attendee limit).</li>
+        {% for err in form.non_field_errors %}
+          <li style="display:none;">Specific Webex API Error: {{err}}</li>
+        {% endfor %}
+  {% endcomment %}
+
+    </div>
+  {% endif %}
+
+  <div class="field">
+    <label for="">Provider</label>
+    <div class="input">
+      <ul class="inputs-list provider-choice">
+        {% for id,name,is_available,image_name in form.account_type_infos %}
+          <li>
+            <label for="account_type_{{id}}">
+              <input type="radio" value="{{id}}" name="account_type" required="" id="account_type_{{id}}"
+                      {% if not is_available %}disabled="disabled"{% endif %}
+                      {% if id == form.current_account_type_id %}checked="checked"{% endif %} />
+              <span>
+                <img class="icon" src="http://{{static_domain}}/final/img/webinars/{{ image_name }}.16.png" />
+                {{ name }}
+                {% if is_available %}
+                  {% if id == 2 %}<span class="label success">New!</span>{% endif %}
+                {% else %}
+                  <span class="label">coming soon!</span>
+                {% endif %}
+                {% comment %}
+                {% if id == 1 %}<span class="cobrand-cta webex">don't have Webex? <a href="http://www.webex.com/products/webcasts-and-online-events.html">get it now</a></span>{% endif %}
+                {% endcomment %}
+                {% if id == 2 %}<span class="cobrand-cta">don't have GTW? <a href="http://citrixonline.evyy.net/c/28318/18205/810">get it now</a></span>{% endif %}
+              </span>
+            </label>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="username field{% if form.username.errors %} error{% endif %} webex">
+    {{ form.username.label_tag }}
+    <div class="input">
+      {{form.username}}
+      {% if form.username.errors %}
+        <span class="help-inline">{% for e in form.username.errors %}{{e}}{% endfor %}</span>
+      {% else %}{% if form.username.help_text %}
+        <span class="help-inline">{{ form.username.help_text }}</span>
+      {% endif %}{% endif %}
+    </div>
+  </div>
+  
+  <div class="password field{% if form.password.errors %} error{% endif %} webex">
+    {{ form.password.label_tag }}
+    <div class="input">
+      {{form.password}}
+      {% if form.password.errors %}
+        <span class="help-inline">{% for e in form.password.errors %}{{e}}{% endfor %}</span>
+      {% else %}{% if form.password.help_text %}
+        <span class="help-inline">{{ form.password.help_text }}</span>
+      {% endif %}{% endif %}
+    </div>
+  </div>
+
+  <div class="extra field{% if form.extra.errors %} error{% endif %}">
+    <label for="id_extra"><span class="webex">Webex Domain</span><span class="gtw">Account Label</span></label>
+    <div class="input">
+      <input id="id_extra" class="hs-input" type="text" required="" name="extra">
+      {% if form.extra.errors %}
+        <span class="help-inline">{% for e in form.extra.errors %}{{e}}{% endfor %}</span>
+      {% else %}
+        <span class="help-inline"><span class="webex">example: yourdomain.webex.com</span><span class="gtw">any name to differentiate this account</span></span>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="exclusion field">
+    <label for="id_exclusion" class="ex_label"><span>No Old Leads</span></label>
+    <div class="input">
+      <input id="id_exclusion" class="hs-input" type="checkbox" required="" name="exclude_old_events_from_hubspot" value="1">
+      <span class="help-inline"><span>do not import old registrants into HubSpot from before:</span></span>
+    </div>
+  <div class="field radio-container">
+    <div class="input ex_option">
+      <input id="id_exclusion_delta1" class="hs-input" type="radio" name="exclusion_date_delta" value="0" checked="checked" />
+      <label for="id_exclusion_date1" class="ex_opt_label"><span>right now</span></label>
+    </div>
+    <br />
+    <div class="input ex_option">
+      <input id="id_exclusion_delta2" class="hs-input" type="radio" name="exclusion_date_delta" value="30" />
+      <label for="id_exclusion_date2" class="ex_opt_label"><span>one month ago</span></label>
+    </div>
+    <br />
+    <div class="input ex_option">
+      <input id="id_exclusion_delta3" class="hs-input" type="radio" name="exclusion_date_delta" value="90" />
+      <label for="id_exclusion_date3" class="ex_opt_label"><span>three months ago</span></label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <input type="submit" class="webex hs-button account primary" value="Connect" />
+    <input type="submit" class="gtw hs-button account primary" value="Next" />
+    {% hs_button href="/accounts" type="reset" class="account secondary" %}Cancel{% end_hs_button %}
+  </div>
+
+</form>
+
+
+  {% comment %}
+  <div class="field{% if form.extra.errors %} error{% endif %}">
+    {{ form.extra.label_tag }}
+    <div class="input">
+      <span class="common-text">https://</span> {{form.extra}} <span class="common-text">.webex.com</span>
+      {% if form.extra.errors %}
+        <span class="help-inline">{% for e in form.extra.errors %}{{e}}{% endfor %}</span>
+      {% else %}{% if form.extra.help_text %}
+        <span class="help-inline">{{ form.extra.help_text }}</span>
+      {% endif %}{% endif %}
+    </div>
+  </div>
+  {% endcomment %}
+
+
+  {% comment %} 
+  <div class="field{% if form.no_unformed_leads_sync.errors %} error{% endif %}">
+    <label for="">Options</label>
+    <div class="input">
+      <ul class="inputs-list">
+        <li>
+          <label for="id_prevent_unformed_lead_import">
+            {{form.prevent_unformed_lead_import}}
+            Avoid lead creation for webinars without forms.
+            <a class="hs-popover" 
+              title="What does this mean?" 
+              data-content="This option is not recommended, however, there is one specific case where you might find it useful: <br>1) If you have salesforce integration and have already imported your webinar registrants/attendees as contacts in your Salesforce, then you might want to check this option to avoid creating duplicates in your Salesforce.  However you will also be unable to take advantage of all the benefits of getting those leads into HubSpot for those webinars that have no associated form  (TODO revisit this text!)"
+              data-placement="above">
+              What does this mean?</a>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+  {% endcomment %}
+
+
+  {% comment %}
+              data-content="This option is not recommended, however, there are specific cases where you might find it useful: <br>; If you have salesforce integration and have already imported your webinar registrants/attendees as contacts in your CRM"
+
+
+Prevent Lead Import To HubSpot On Webinars With No Associated Landing Forms
+          
+      {% if form.no_unformed_leads_sync.errors %}
+        <span class="help-inline">{% for e in form.no_unformed_leads_sync.errors %}{{e}}{% endfor %}</span>
+      {% else %}{% if form.no_unformed_leads_sync.help_text %}
+        <span class="help-inline">{{ form.no_unformed_leads_sync.help_text }}</span>
+      {% endif %}{% endif %}
+    </div>
+  </div>
+  {% endcomment %}
+
+
+  {% comment %} SelectField 
+  <div class="field{% if form.account_type.errors %} error{% endif %}">
+    {{ form.account_type.label_tag }}
+    <div class="input">
+      {{form.account_type}}
+    </div>
+  </div>
+{% endcomment %}

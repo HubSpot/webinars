@@ -1,0 +1,27 @@
+- model: webinars.hub
+  pk: 28306
+  fields:
+    uninstalled_at: null
+    created_at: 1
+
+- model: webinars.account
+  pk: 1
+  fields: 
+    account_type: 1
+    username: "SECRET"
+    password: "SECRET"
+    email: "SECRET@hubspot.com"
+    extra: "SECRET"
+    hub: 28306
+
+- model: webinars.account
+  pk: 2
+  fields: 
+    account_type: 2
+    username: "SECRET"
+    password: "SECRET"
+    email: "SECRET@hubspot.com"
+    extra: "??"
+    hub: 28306
+ 
+ 
